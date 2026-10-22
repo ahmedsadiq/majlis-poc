@@ -1,0 +1,72 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-display: "Marcellus", "Cormorant Garamond", Georgia, serif;
+  --font-sans: "Manrope", "Inter", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+  --gold: #e2bd5c;
+  --red: #ef3340;
+  --green: #00843d;
+}
+
+html, body { height: 100%; }
+body {
+  @apply bg-ink-950 text-sand-100 font-sans antialiased;
+  background-image:
+    radial-gradient(1200px 600px at 10% -10%, rgba(0,132,61,.14), transparent 60%),
+    radial-gradient(900px 500px at 100% 0%, rgba(239,51,64,.10), transparent 55%),
+    radial-gradient(800px 800px at 50% 120%, rgba(226,189,92,.08), transparent 60%);
+  background-attachment: fixed;
+}
+
+/* Eight-point star / girih lattice, very faint */
+.pattern {
+  background-image:
+    linear-gradient(45deg, rgba(226,189,92,.045) 1px, transparent 1px),
+    linear-gradient(-45deg, rgba(226,189,92,.045) 1px, transparent 1px),
+    linear-gradient(0deg, rgba(226,189,92,.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(226,189,92,.03) 1px, transparent 1px);
+  background-size: 48px 48px, 48px 48px, 48px 48px, 48px 48px;
+  mask-image: radial-gradient(ellipse at center, rgba(0,0,0,.9), transparent 75%);
+}
+
+.glass {
+  @apply bg-ink-800/70 backdrop-blur-xl border border-white/[.06] rounded-2xl shadow-card;
+}
+.glass-strong { @apply bg-ink-900/85 backdrop-blur-2xl border border-gold-500/20 rounded-2xl shadow-glow; }
+
+.tricolor {
+  background: linear-gradient(90deg, var(--green) 0 33.3%, #fff 33.3% 66.6%, var(--red) 66.6% 100%);
+}
+.gold-text {
+  background: linear-gradient(120deg, #f6e3a3, #e2bd5c 45%, #b8913a);
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+}
+.hairline { @apply h-px w-full bg-gradient-to-r from-transparent via-gold-500/40 to-transparent; }
+
+.btn { @apply inline-flex items-center justify-center gap-2 rounded-xl px-4 py-2.5 text-sm font-semibold transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-gold-400/60 disabled:opacity-40 disabled:cursor-not-allowed; }
+.btn-gold { @apply btn bg-gradient-to-b from-gold-300 to-gold-500 text-ink-950 hover:brightness-110 shadow-[0_10px_30px_-12px_rgba(226,189,92,.6)]; }
+.btn-ghost { @apply btn border border-white/10 text-sand-100 hover:bg-white/5 hover:border-gold-500/40; }
+.btn-danger { @apply btn bg-uae-red/90 text-white hover:bg-uae-red; }
+.btn-green { @apply btn bg-uae-green text-white hover:brightness-110; }
+
+.label { @apply text-[11px] uppercase tracking-[.18em] text-sand-300/60 font-semibold; }
+.input { @apply w-full rounded-xl bg-ink-900/70 border border-white/10 px-3.5 py-2.5 text-sm text-sand-50 placeholder:text-sand-300/30 focus:outline-none focus:border-gold-500/50 focus:ring-2 focus:ring-gold-500/15 transition; }
+.kbd { @apply font-mono text-[11px] px-1.5 py-0.5 rounded-md bg-white/5 border border-white/10 text-sand-200; }
+
+::-webkit-scrollbar { width: 8px; height: 8px; }
+::-webkit-scrollbar-thumb { background: rgba(226,189,92,.18); border-radius: 8px; }
+::-webkit-scrollbar-track { background: transparent; }
+
+.shimmer {
+  background: linear-gradient(90deg, rgba(255,255,255,.03) 25%, rgba(226,189,92,.14) 50%, rgba(255,255,255,.03) 75%);
+  background-size: 200% 100%;
+  animation: shimmer 2.2s linear infinite;
+}
+
+.ring-live::before {
+  content: ""; position: absolute; inset: -6px; border-radius: 9999px;
+  border: 2px solid rgba(239,51,64,.6); animation: pulseRing 1.6s ease-out infinite;
+}
